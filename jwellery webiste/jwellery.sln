@@ -8,20 +8,20 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "jwellery webiste(1)", "http
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_35687"
-		Debug.AspNetCompiler.PhysicalPath = "G:\programming files\aspDonet\practice1\jwellery webiste\"
+		Debug.AspNetCompiler.PhysicalPath = "..\jwellery webiste\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_35687\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_35687"
-		Release.AspNetCompiler.PhysicalPath = "G:\programming files\aspDonet\practice1\jwellery webiste\"
+		Release.AspNetCompiler.PhysicalPath = "..\jwellery webiste\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_35687\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "G:\programming files\aspDonet\practice1\jwellery webiste\"
+		SlnRelativePath = "..\jwellery webiste\"
 	EndProjectSection
 EndProject
 Global
