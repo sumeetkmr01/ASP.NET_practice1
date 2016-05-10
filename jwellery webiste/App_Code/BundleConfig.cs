@@ -17,6 +17,8 @@ public class BundleConfig
 
         //bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
         //            "~/Scripts/jquery-ui-{version}.js"));
+        bundles.Add(new ScriptBundle("~/bundles/css").Include(
+            "~/Content/bootstrap-theme.css", "~/Content/bootstrap-theme.css.map", "~/Content/bootstrap-theme.min.css", "~/Content/bootstrap-theme.min.css.map", "~/Content/bootstrap.css", "~/Content/bootstrap.css.map", "~/Content/bootstrap.min.css", "~/Content/bootstrap.min.css.map"));
 
     }
 }
