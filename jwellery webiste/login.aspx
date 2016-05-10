@@ -3,7 +3,12 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head runat="server">
+    <asp:PlaceHolder ID="PlaceHolder1" runat="server">        
+         <%: Scripts.Render("~/bundles/jquery") %>
+         <%: Scripts.Render("~/bundles/css") %>
+    </asp:PlaceHolder>
     <title></title>
 </head>
 <body>
