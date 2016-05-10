@@ -5,6 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+  <%--  <script src="~/bundles/jquery"></script>--%>           
+    
+         <%: Styles.Render("~/bundles/css") %>
+     <%: Scripts.Render("~/bundles/jquery") %>
 </head>
 <body>
     <form id="form1" runat="server">
