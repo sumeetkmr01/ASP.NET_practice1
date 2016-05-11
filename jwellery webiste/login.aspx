@@ -14,12 +14,12 @@
 </head>
 <body>
     <div class="Container">
-<form id="form1" runat="server">
+<%--<form id="form1" runat="server">--%>
     <div class="row">
        <div class="col-md-4 col-md-offset-4">
-           <div class="login-panel panel-default">
+           <div class="login-panel panel panel-default">
                <div class="panel-heading">
-                   <h3 class="panel-title" style="text-align:center">Please Sign In</h3>
+                   <h3 class="panel-title" >Please Sign In</h3>
               </div>
                 <div class="panel-body">
                    <form role="form">
@@ -35,10 +35,8 @@
                           <input type="checkbox" name="Remember"  value="Remembeer Me" />Remember Me
                      </label>
                                 </div>
-                       <button type="button" style="text-align:center" class="btn btn-lg btn-success btn-block"" >Submit</button>
-                      <div class="form-group">
-                         
-                      </div>
+                       <button type="button" class="btn btn-lg btn-success btn-block"" >Submit</button>
+                      
                        </fieldset>
               </form>
                 </div>   
@@ -46,7 +44,7 @@
            </div>
        </div>
     </div>
-    </form>
+    <%--</form>--%>
     </div>
     
 </body>
