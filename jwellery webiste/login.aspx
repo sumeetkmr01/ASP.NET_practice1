@@ -4,11 +4,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<head runat="server">
-    <asp:PlaceHolder ID="PlaceHolder1" runat="server">        
+<head runat="server">       
          <%: Scripts.Render("~/bundles/jquery") %>
          <%: Styles.Render("~/bundles/css") %>
-    </asp:PlaceHolder>
+         <%: Styles.Render("~/bundles/ExternalCss") %>
+   
    
     <title></title>
 </head>
