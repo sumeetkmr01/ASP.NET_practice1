@@ -5,8 +5,8 @@
     void Application_Start(object sender, EventArgs e) 
     {
         // Code that runs on application startup
-        BundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);       
-
+        BundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
+        
     }
     
     void Application_End(object sender, EventArgs e) 
