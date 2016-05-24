@@ -9,7 +9,8 @@
         <asp:PlaceHolder ID="PlaceHolder1" runat="server">        
          <%: Scripts.Render("~/bundles/jquery") %>
          <%: Scripts.Render("~/bundles/css") %>
-        
+         <%: Scripts.Render("~/bundles/ExternalCss") %>
+         <%:Scripts.Render("~/bundles/ExternalJs") %>
     </asp:PlaceHolder>
     </asp:ContentPlaceHolder>
 

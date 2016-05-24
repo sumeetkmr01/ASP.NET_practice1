@@ -12,6 +12,7 @@
     <title>
     </title>
     <%-- <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js"></script>--%>
+
     <script type="text/javascript">
         
         //    function onlogin() {
@@ -49,7 +50,7 @@
               </div>
                 <div class="panel-body">
                     <form id="form1" runat="server" role="form">
-                   
+                   <asp:ScriptManager ID="scriptmanager1" runat="server" ></asp:ScriptManager>
                   <fieldset>
                    <div class="form-group">
                   <%--<input class="form-control" placeholder="E-mail" name="Email" runat="server"  id="txtEmail" />--%>

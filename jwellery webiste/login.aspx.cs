@@ -43,8 +43,14 @@ public partial class login : System.Web.UI.Page
         else if(txtPassword.Text!=password)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "alert('Invalid Password');", true);
+           // ScriptManager.RegisterClientScriptBlock(p, p.GetType(), "PopUP", "OpenSingle('" + fil_loc + "?STR=" + QR_str + "','900px','490px','" + title + "');", true);
         }
-        //Open();
+      //  Open();
+        //Response.Redirect("~/PopUpPage.aspx");
+       // ScriptManager.RegisterStartupScript(this, this.GetType(), "PopUP", "alert('Invalid Password');", true);
+        //Page p = (Page)HttpContext.Current.CurrentHandler;
+        //ScriptManager.RegisterClientScriptBlock(p, p.GetType(), "PopUP", "OpenSingle('~/PopUpPage.aspx','900px','490px');", true);
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "PopUP", "OpenSingle('PopUpPage.aspx','325px','350px','aa');", true);
     }
 
     private void Open()
@@ -59,12 +65,13 @@ public partial class login : System.Web.UI.Page
 
             if (ScriptManager.GetCurrent(p) != null)
             {
-                ScriptManager.RegisterClientScriptBlock(p, p.GetType(), "PopUP", "OpenSingle('" + fil_loc + "?STR=" + QR_str + "','900px','490px','" + title + "');", true);
+                ScriptManager.RegisterClientScriptBlock(p, p.GetType(), "PopUP", "OpenSingle('" + fil_loc + "','900px','490px','" + title + "');", true);
             }
             else
             {
                 ScriptManager.RegisterClientScriptBlock(p, p.GetType(), "PopUP", "OpenSingle('" + fil_loc + "','900px','490px','" + title + "');", true);
             }
+
         }
     }
 
