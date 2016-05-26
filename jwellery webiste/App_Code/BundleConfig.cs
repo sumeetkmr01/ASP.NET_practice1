@@ -20,7 +20,7 @@ public class BundleConfig
         //bundles.Add(new ScriptBundle("~/bundles/css").Include(
         //    "~/Content/bootstrap-theme.css", "~/Content/bootstrap-theme.css.map", "~/Content/bootstrap-theme.min.css", "~/Content/bootstrap-theme.min.css.map", "~/Content/bootstrap.css", "~/Content/bootstrap.css.map", "~/Content/bootstrap.min.css", "~/Content/bootstrap.min.css.map"));
 
-        bundles.Add(new ScriptBundle("~/bundles/ExternalJs").Include("~/Scripts/metisMenu.min.js", "~/Scripts/raphael-min.js", "~/Scripts/jquery.min.js", "~/Scripts/morris.min.js", "~/Scripts/morris-data.js", "~/Scripts/sb-admin-2.js"));
+        bundles.Add(new ScriptBundle("~/bundles/ExternalJs").Include("~/Scripts/metisMenu.min.js", "~/Scripts/raphael-min.js", "~/Scripts/jquery.min.js","~/Scripts/morris.min.js", "~/Scripts/morris-data.js", "~/Scripts/sb-admin-2.js"));
         bundles.Add(new ScriptBundle("~/bundles/css").Include(
          "~/Content/bootstrap.css", "~/Content/sb-admin-2.css"));
 
