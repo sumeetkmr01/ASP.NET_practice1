@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <asp:ContentPlaceHolder id="head" runat="server">
-        <asp:PlaceHolder ID="PlaceHolder1" runat="server">        
-         <%: Scripts.Render("~/bundles/jquery") %>
-         <%: Scripts.Render("~/bundles/css") %>
-         <%: Scripts.Render("~/bundles/ExternalCss") %>
+    <%: Scripts.Render("~/bundles/jquery") %>
+         <%: Styles.Render("~/bundles/css") %>
+         <%: Styles.Render("~/bundles/ExternalCss") %>
          <%:Scripts.Render("~/bundles/ExternalJs") %>
-    </asp:PlaceHolder>
+    <asp:ContentPlaceHolder id="head" runat="server">
+
+
     </asp:ContentPlaceHolder>
 
 </head>
