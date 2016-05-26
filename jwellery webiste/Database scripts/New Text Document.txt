@@ -1,0 +1,6 @@
+create table CreateUser(
+ id int not null identity(1,1)
+,name varchar(max)
+,username varchar(max)
+,password varchar(max)
+)
