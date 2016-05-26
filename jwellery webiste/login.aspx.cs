@@ -34,7 +34,7 @@ public partial class login : System.Web.UI.Page
             id = Convert.ToInt32(dr[0].ToString().Trim());
             username = dr[1].ToString().Trim();
             password = dr[2].ToString().Trim();
-            //Response.Redirect("~/");
+            Response.Redirect("~/DashBoard.aspx");
         }
         else if (txtEmail.Text != username)
         {

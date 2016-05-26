@@ -63,10 +63,10 @@ public class clsConnection
    {
        SqlCommand com = new SqlCommand("SELECT * FROM " + Tabname + "", Connect());
        SqlCommandBuilder scb;
-       DataSet ds1=new DataSet ();
+       DataSet dsSave=new DataSet ();
        SqlDataAdapter da = new SqlDataAdapter(com);
-       scb=new SqlCommandBuilder (da); 
-       da.Fill(ds1,"CREATEUSER");
+       scb=new SqlCommandBuilder (da);
+       da.Fill(dsSave, "TABLE");
        try
        {
            da.Update(ds);
