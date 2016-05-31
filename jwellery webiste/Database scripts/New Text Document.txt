@@ -4,3 +4,7 @@ create table CreateUser(
 ,username varchar(max)
 ,password varchar(max)
 )
+
+// ALTER TABLE LOGIN BCOZ THIS FIELD IS REQUIRED WHILE RESETTING THE PASSWORD.
+alter table login
+add UpdateColumn varchar(max)

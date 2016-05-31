@@ -11,7 +11,8 @@ public partial class frm_CreateUser : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //decode();
+        txtName.Focus();
     }
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
@@ -34,6 +35,12 @@ public partial class frm_CreateUser : System.Web.UI.Page
     }
     private void Save()
     {
+        string UserCheck = clsConnection.OneFieldWithCond("USERNAME", "LOGIN", "WHERE USERNAME='" + txtUserName.Text.Trim() + "'");
+        if (UserCheck != "")
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "alert('This UserName Already Exists. Please Choose any Other UserName');", true);
+            return;
+        }
         DataSet ds = new DataSet();
         ds = clsConnection.DsFill("LOGIN");
         DataRow dr = ds.Tables[0].NewRow();
@@ -68,6 +75,30 @@ public partial class frm_CreateUser : System.Web.UI.Page
         {
         }
     }
-
+    private void decode()
+    {
+        string Query = "";
+        Query = "select cast(dob as date)as date from cc  order by date";
+        SqlCommand com = new SqlCommand(Query,clsConnection. Connect());
+        SqlDataAdapter da = new SqlDataAdapter(com);
+        DataTable dt = new DataTable();
+        da.Fill(dt);
+        string mq0 = "";
+        for (int i = 0; i < dt.Rows.Count; i++)
+        {
+            if (mq0.Length > 0)
+            {
+                mq0 = mq0 + ",cast(trim(dob)as date))="+dt.Rows[i][0].ToString().Trim();
+            }
+            else
+            {
+                mq0 = "cast(trim(dob)as date))="+dt.Rows[i][0].ToString().Trim();
+            }
+        }
+        string query = "select name ," + mq0 + " from cc ";
+        SqlCommand cmd = new SqlCommand(query, clsConnection.Connect());
+        da = new SqlDataAdapter(cmd);
+        da.Fill(dt);
+    }
 
 }

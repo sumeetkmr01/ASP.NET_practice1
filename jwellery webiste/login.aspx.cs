@@ -123,5 +123,9 @@ public partial class login : System.Web.UI.Page
     //}
 
     #endregion
-    
+
+    protected void lnkForget_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/frm_ForgetPsd.aspx");
+    }
 }

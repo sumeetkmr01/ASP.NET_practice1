@@ -55,6 +55,7 @@
                    <div class="form-group">
                   <%--<input class="form-control" placeholder="E-mail" name="Email" runat="server"  id="txtEmail" />--%>
                        <asp:TextBox runat="server"  id="txtEmail" placeholder="E-mail" name="Email" class="form-control"></asp:TextBox>
+                          <asp:LinkButton ID="lnkForget" runat="server" OnClick="lnkForget_Click" Visible="true"></asp:LinkButton>
                </div>
                       <div class="form-group">
                           <%--<input class="form-control" placeholder="Password" type="password" name="Password" id="txtPassword"  runat="server"/>--%>
@@ -65,7 +66,10 @@
                           <input type="checkbox" name="Remember"  value="Remembeer Me" />Remember Me
                      </label>
                                 </div>
-                    <button  id="btnSubmit" class ="btn btn-lg btn-success btn-block" onserverclick="btnSubmit_Click" runat="server" >Submit</button>
+                      <div class="form-group">
+                      </div>
+                    <button  id="btnSubmit" class ="btn btn-lg btn-success btn-block" onserverclick="btnSubmit_Click" runat="server"  >Submit</button>
+                      
                   <%--<asp:Button ID ="v" OnClick="v_Click"--%>
                    
                        </fieldset>
