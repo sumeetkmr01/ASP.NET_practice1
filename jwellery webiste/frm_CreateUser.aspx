@@ -1,66 +1,42 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="frm_CreateUser.aspx.cs" Inherits="frm_CreateUser" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div class="Wrapper">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+
+    <div class="Container">
         <div class="row">
-            <div class="col-xl-6 col-md-offset-4">
-                <div class="box box-primary">
-                    <div class="box-body">
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" style="text-align: center">
-                                            Create User 
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <%--   <form role="form">--%>
-                                                    <div class="form-group">
-                                                        <table>
-                                                            <tr>
-                                                                <td>
-                                                                    <asp:TextBox ID="txtName" runat="server" placeholder="Enter Name" CssClass="form-control" Style="text-align: center" Width="420px"></asp:TextBox>
-                                                                    <br />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <asp:TextBox ID="txtUserName" runat="server" placeholder="Enter UserName" CssClass="form-control" Style="text-align: center" Width="420px"></asp:TextBox>
-                                                                    <br />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <asp:TextBox ID="txtPassword" runat="server" placeholder="Enter Password" TextMode="Password" CssClass="form-control" Style="text-align: center" Width="420px"></asp:TextBox>
-                                                                    <br />
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td style="text-align: center">
-                                                                    <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" CssClass="btn btn-outline btn-success" Width="100px" />
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-
-
-                                                    </div>
-                                                    <%--  </form>--%>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Create User </h3>
                     </div>
-                </div>
+                    <div class="panel-body">
+                       
+                            <fieldset>
+                            <div class="form-group">                                
+                                            <asp:TextBox ID="txtName" runat="server" placeholder="Enter Name" CssClass="form-control" ></asp:TextBox>
+                                        </div>
+                                       <div class="form-group">    
+                                            <asp:TextBox ID="txtUserName" runat="server" placeholder="Enter UserName" CssClass="form-control" ></asp:TextBox>
+                                            <br />
+                                         </div>
+                                      <div class="form-group">    
+                                            <asp:TextBox ID="txtPassword" runat="server" placeholder="Enter Password" TextMode="Password" CssClass="form-control"></asp:TextBox>
+                                           </div>
+
+                                 <div class="form-group">
+                      </div>
+                                            <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" CssClass="btn btn-lg btn-success btn-block"  />
+                                        </fieldset>
+                          
+
+
+                            </div>
+                       
             </div>
+                </div>
         </div>
-    </div>
+    </div>                
 </asp:Content>
 
