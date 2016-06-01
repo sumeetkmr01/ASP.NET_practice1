@@ -75,8 +75,9 @@ public class clsConnection
            da.Update(ds);
          //  da.InsertCommand();
        }
-       catch
+       catch(SqlException ex)
        {
+
        }
    }
 
