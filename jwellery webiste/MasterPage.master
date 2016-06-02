@@ -6,9 +6,10 @@
 <head runat="server">
     <title></title>
     <%: Scripts.Render("~/bundles/jquery") %>
-         <%: Styles.Render("~/bundles/css") %>
-         <%: Styles.Render("~/bundles/ExternalCss") %>
-         <%:Scripts.Render("~/bundles/ExternalJs") %>
+    <%:Scripts.Render("~/bundles/ExternalJs") %>
+    <%: Styles.Render("~/bundles/css") %>
+    <%: Styles.Render("~/bundles/ExternalCss") %>
+         
     <asp:ContentPlaceHolder id="head" runat="server">
 
 
