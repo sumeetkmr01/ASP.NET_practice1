@@ -50,6 +50,7 @@ public partial class frm_ForgetPsd : System.Web.UI.Page
             return;
         }
         Save();
+       clsConnection.ClearInputs(Page.Controls);
     }
 
     public void Save()
@@ -71,4 +72,5 @@ public partial class frm_ForgetPsd : System.Web.UI.Page
         clsConnection.ExcCom("DELETE FROM LOGIN WHERE USERNAME='" + txtUserName.Text.Trim() + "' AND ID='" + dtCheck.Rows[0][1].ToString().Trim() + "' AND UPDATECOLUMN ='0'");
        // ClearText(this);
     }
+
 }

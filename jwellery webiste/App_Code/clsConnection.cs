@@ -5,6 +5,8 @@ using System.Web;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 public class clsConnection
 {
@@ -143,6 +145,16 @@ public class clsConnection
            Squery = "";
        }
        return Squery;
+   }
+
+  public static  void ClearInputs(ControlCollection ctrls)
+   {
+       foreach (Control ctrl in ctrls)
+       {
+           if (ctrl is TextBox)
+               ((TextBox)ctrl).Text = string.Empty;
+           ClearInputs(ctrl.Controls);
+       }
    }
 	public clsConnection()
 	{

@@ -37,9 +37,8 @@ public partial class Admin_frm_ProdCatg : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "alert('Please Enter Description');", true);
             return;
         }
-       // Save();
-       // ClearText(this.Controls);
-        ClearInputs(Page.Controls);
+        Save();
+        clsConnection.ClearInputs(Page.Controls);
         FillGrd();
         ClearHiddenField();
     }
@@ -66,6 +65,7 @@ public partial class Admin_frm_ProdCatg : System.Web.UI.Page
         grd.DataSource = dtFill;
         grd.DataBind();
     }
+
     private void ClearText(ControlCollection  con)
     {
         try
@@ -94,15 +94,7 @@ public partial class Admin_frm_ProdCatg : System.Web.UI.Page
         {
         }
     }
-    void ClearInputs(ControlCollection ctrls)
-    {
-        foreach (Control ctrl in ctrls)
-        {
-            if (ctrl is TextBox)
-                ((TextBox)ctrl).Text = string.Empty;
-            ClearInputs(ctrl.Controls);
-        }
-    }
+
     protected void grd_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         string var = e.CommandName.ToString();
@@ -141,14 +133,17 @@ public partial class Admin_frm_ProdCatg : System.Web.UI.Page
                 break;
         }
     }
+
     protected void grd_RowEditing(object sender, GridViewEditEventArgs e)
     {
 
     }
+
     protected void grd_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
 
     }
+
     private void ClearHiddenField()
     {
         hf1.Value = "";

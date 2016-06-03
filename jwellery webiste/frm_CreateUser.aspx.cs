@@ -11,7 +11,7 @@ public partial class frm_CreateUser : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //decode();
+     
         txtName.Focus();
     }
     protected void btnSubmit_Click(object sender, EventArgs e)
@@ -32,6 +32,7 @@ public partial class frm_CreateUser : System.Web.UI.Page
             return;
         }
         Save();
+       clsConnection.ClearInputs(Page.Controls);
     }
     private void Save()
     {
@@ -49,56 +50,7 @@ public partial class frm_CreateUser : System.Web.UI.Page
         dr["PASSWORD"] = txtPassword.Text.Trim();
         ds.Tables[0].Rows.Add(dr);
         clsConnection.Save(ds, "LOGIN");
-        ClearText(this);
     }
-    private void ClearText(Control con)
-    {
-        try
-        {
-            foreach (Control c in con.Controls)
-            {
-                if (c is TextBox)
-                {
-                    ((TextBox)c).Text="";
-                   
-                }
-                //else
-                //{
-                //    if (cmbCust.SelectedIndex > 0)
-                //    {
-                //        cmbCust.SelectedIndex = 0;
-                //    }
-                //}
-            }
-        }
-        catch (Exception)
-        {
-        }
-    }
-    private void decode()
-    {
-        string Query = "";
-        Query = "select cast(dob as date)as date from cc  order by date";
-        SqlCommand com = new SqlCommand(Query,clsConnection. Connect());
-        SqlDataAdapter da = new SqlDataAdapter(com);
-        DataTable dt = new DataTable();
-        da.Fill(dt);
-        string mq0 = "";
-        for (int i = 0; i < dt.Rows.Count; i++)
-        {
-            if (mq0.Length > 0)
-            {
-                mq0 = mq0 + ",cast(trim(dob)as date))="+dt.Rows[i][0].ToString().Trim();
-            }
-            else
-            {
-                mq0 = "cast(trim(dob)as date))="+dt.Rows[i][0].ToString().Trim();
-            }
-        }
-        string query = "select name ," + mq0 + " from cc ";
-        SqlCommand cmd = new SqlCommand(query, clsConnection.Connect());
-        da = new SqlDataAdapter(cmd);
-        da.Fill(dt);
-    }
+   
 
 }

@@ -248,29 +248,29 @@
                         <li>
                             <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
-                        <li>
+                       <%-- <li>
                             <a href="frm_CreateUser.aspx"><i class="fa fa-bar-chart-o fa-fw"></i> Create User<span class="fa arrow"></span></a>
-                            <%--<ul class="nav nav-second-level">
+                            <ul class="nav nav-second-level">
                                 <li>
                                     <a href="flot.html">Flot Charts</a>
                                 </li>
                                 <li>
                                     <a href="morris.html">Morris.js Charts</a>
                                 </li>
-                            </ul>--%>
+                            </ul>
                             <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="~\Admin\frm_ProdCatg.aspx"><i class="fa fa-table fa-fw"></i> Product Category</a>
+                        </li>--%>
+                        <li> 
+                            <a href="frm_ProdCatg.aspx"><i class="fa fa-table fa-fw"></i> Product Category</a>
                         </li>
                         <li>
                             <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Admin Options<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
+                                    <a href="frm_CreateUser.aspx">Create User</a>
                                 </li>
                                 <li>
                                     <a href="buttons.html">Buttons</a>

@@ -57,7 +57,8 @@ public partial class login : System.Web.UI.Page
     {
         if (HttpContext.Current.CurrentHandler is Page)
         {
-            string QR_str = "", title="";
+           // string QR_str = "";
+              string   title="";
             string fil_loc = System.Web.VirtualPathUtility.ToAbsolute("~/PopUpPage.aspx");
             //fil_loc = "SSeek.aspx";
 
