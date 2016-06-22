@@ -70,10 +70,11 @@ public class clsConnection
        SqlCommandBuilder scb;
        DataSet dsSave=new DataSet ();
        SqlDataAdapter da = new SqlDataAdapter(com);
-       scb=new SqlCommandBuilder (da);
+       scb = new SqlCommandBuilder(da);
        da.Fill(dsSave, "TABLE");
        try
        {
+           
            da.Update(ds);
          //  da.InsertCommand();
        }

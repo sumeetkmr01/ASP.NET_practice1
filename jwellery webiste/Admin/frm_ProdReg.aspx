@@ -79,7 +79,7 @@
           <div class="col-md-12">
                                                     <%--   <form role="form">--%>
                                                     <div class="form-group">
-               <asp:GridView ID="grd" runat="server" CellPadding="4" ForeColor="#333333" GridLines="Both"  Width="600px" AutoGenerateColumns="false" OnRowCommand="grd_RowCommand" OnRowEditing="grd_RowEditing" OnRowDeleting="grd_RowDeleting">
+               <asp:GridView ID="grd" runat="server" CellPadding="4" ForeColor="#333333"  Width="600px" AutoGenerateColumns="False" OnRowCommand="grd_RowCommand" OnRowEditing="grd_RowEditing" OnRowDeleting="grd_RowDeleting">
                                                            <AlternatingRowStyle BackColor="White" />
                                                            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                                                            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -94,12 +94,11 @@
                                                               <asp:BoundField DataField="PNAME" HeaderText="Product Name" ></asp:BoundField> 
                                                               <asp:BoundField DataField="PDESC" HeaderText="Description" />
                                                               <asp:BoundField DataField="PCATEGORYID" HeaderText="Product Category ID" />
-                                                              <asp:TemplateField>
-                                                                  <HeaderTemplate>Product Image</HeaderTemplate>
-                                                                  <ItemTemplate>
-                                                                      <asp:Image ID="imgProd" runat="server"  />
-                                                                  </ItemTemplate>
-                                                              </asp:TemplateField>
+                                                              <asp:BoundField DataField="PPRODID" HeaderText="Product ID" />
+                                                           
+                                                              <asp:ImageField DataImageUrlField="PPIC" HeaderText="Product Image"  >
+                                                                  <ControlStyle Height="150px" Width="150px" />
+                                                              </asp:ImageField>
                                                               <asp:TemplateField>
                                                                   <HeaderTemplate >Edit</HeaderTemplate>
                                                                   <ItemStyle Width="50px" />
@@ -114,6 +113,7 @@
                                                                       <asp:Button ID="btnDelete" runat="server" Text="Delete" Width="50px"  CommandName="Delete"/>
                                                                   </ItemTemplate>
                                                               </asp:TemplateField>
+                                                             
                                                           </Columns>
                                                        </asp:GridView>
 
@@ -123,7 +123,8 @@
          <asp:HiddenField ID="hffield" runat="server" />
          <asp:HiddenField ID="hf1" runat="server" />
          <asp:HiddenField ID="hfId" runat="server" />
-          <asp:HiddenField ID="hfCatid" runat="server" />
+          <asp:HiddenField ID="hfProdId" runat="server" />
+          <asp:HiddenField ID="hfPPIC" runat="server" />
     </div>
 </asp:Content>
 

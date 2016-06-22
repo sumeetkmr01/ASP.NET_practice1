@@ -16,6 +16,7 @@ public partial class Admin_frm_ProdCatg : System.Web.UI.Page
             FillGrd();
         }
     }
+
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
         if (txtCatg.Text == "")
@@ -28,8 +29,8 @@ public partial class Admin_frm_ProdCatg : System.Web.UI.Page
         {
             if (Catg == txtCatg.Text.Trim().ToUpper())
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "alert('This Category already Exists. Please Enter another Category');", true);
-                return;
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "alert('This Category already Exists. Please Enter another Category');", true);
+                //return;
             }
         }
         if (txtDescription.Text == "")
@@ -42,19 +43,27 @@ public partial class Admin_frm_ProdCatg : System.Web.UI.Page
         FillGrd();
         ClearHiddenField();
     }
+
     private void Save()
     {
-        DataSet ds = new DataSet();
-        ds = clsConnection.DsFill("CATEGORY");
-        DataRow dr = ds.Tables[0].NewRow();
-        dr["CATEGORY"] = txtCatg.Text.Trim().ToUpper();
-        dr["DESCRIPTION"] = txtDescription.Text.Trim().ToUpper();
-        if (hfCatid.Value != "")
-        {
-            dr["CATID"] = hfCatid.Value;
-        }
-        ds.Tables[0].Rows.Add(dr);
-        clsConnection.Save(ds, "CATEGORY");
+        //if (hfCatid.Value != "")
+        //{
+        //    clsConnection.ExcCom("UPDATE CATEGORY SET CATEGORY='" + txtCatg.Text + "' , DESCRIPTION='" + txtDescription.Text + "' , CATID='" + hfCatid.Value + "' WHERE ID='" + hfId.Value + "'");
+        //}
+        //else
+        //{
+            DataSet ds = new DataSet();
+            ds = clsConnection.DsFill("CATEGORY");
+            DataRow dr = ds.Tables[0].NewRow();
+            dr["CATEGORY"] = txtCatg.Text.Trim().ToUpper();
+            dr["DESCRIPTION"] = txtDescription.Text.Trim().ToUpper();
+            if (hfCatid.Value != "")
+            {
+                dr["CATID"] = hfCatid.Value;
+            }
+            ds.Tables[0].Rows.Add(dr);
+            clsConnection.Save(ds, "CATEGORY");
+        //}
         hfCatid.Value = clsConnection.OneFieldWithCond("CATID", "CATEGORY", "WHERE CATEGORY='" + txtCatg.Text.Trim() + "'");
         ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "alert('Your product is registered under this '" + hfCatid.Value + "');", true);
     }
