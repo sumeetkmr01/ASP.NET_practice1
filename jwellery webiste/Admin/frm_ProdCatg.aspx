@@ -82,17 +82,17 @@
                                                            <SortedDescendingCellStyle BackColor="#FCF6C0" />
                                                            <SortedDescendingHeaderStyle BackColor="#820000" />
                                                           <Columns>
-                                                              <asp:BoundField DataField="Category" HeaderText="Category" ></asp:BoundField> 
-                                                              <asp:BoundField DataField="Description" HeaderText="Description" />
-                                                              <asp:BoundField DataField="CatID" HeaderText="Category ID" />
-                                                              <asp:TemplateField>
+                                                              <asp:BoundField DataField="Category" HeaderText="Category" ReadOnly="true"></asp:BoundField> 
+                                                              <asp:BoundField DataField="Description" HeaderText="Description" ReadOnly="true" />
+                                                              <asp:BoundField DataField="CatID" HeaderText="Category ID" ReadOnly="true" />
+                                                             <asp:TemplateField>
                                                                   <HeaderTemplate >Edit</HeaderTemplate>
                                                                   <ItemStyle Width="50px" />
                                                                   <ItemTemplate >
-                                                                      <asp:Button ID="btnEdit"  runat="server" Text="Edit" Width="50px"  CommandName="Edit" />  
+                                                                      <asp:Button ID="btnEdit"  runat="server" Text="Edit" Width="50px"   CommandName="Edit" />  
                                                                   </ItemTemplate>
                                                               </asp:TemplateField>
-                                                              <asp:TemplateField>
+                                                               <asp:TemplateField>
                                                                   <HeaderTemplate >Delete</HeaderTemplate>
                                                                   <ItemStyle Width="50px" />
                                                                   <ItemTemplate >

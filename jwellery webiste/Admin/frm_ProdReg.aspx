@@ -91,10 +91,10 @@
                                                            <SortedDescendingCellStyle BackColor="#FCF6C0" />
                                                            <SortedDescendingHeaderStyle BackColor="#820000" />
                                                           <Columns>
-                                                              <asp:BoundField DataField="PNAME" HeaderText="Product Name" ></asp:BoundField> 
-                                                              <asp:BoundField DataField="PDESC" HeaderText="Description" />
-                                                              <asp:BoundField DataField="PCATEGORYID" HeaderText="Product Category ID" />
-                                                              <asp:BoundField DataField="PPRODID" HeaderText="Product ID" />
+                                                              <asp:BoundField DataField="PNAME" HeaderText="Product Name" ReadOnly="true" ></asp:BoundField> 
+                                                              <asp:BoundField DataField="PDESC" HeaderText="Description" ReadOnly="true"/>
+                                                              <asp:BoundField DataField="PCATEGORYID" HeaderText="Product Category ID" ReadOnly="true"/>
+                                                              <asp:BoundField DataField="PPRODID" HeaderText="Product ID" ReadOnly="true"/>
                                                            
                                                               <asp:ImageField DataImageUrlField="PPIC" HeaderText="Product Image"  >
                                                                   <ControlStyle Height="150px" Width="150px" />

@@ -24,15 +24,15 @@ public partial class Admin_frm_ProdCatg : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "alert('Please Enter Category');", true);
             return;
         }
-        string Catg = clsConnection.OneFieldWithCond("CATEGORY", "CATEGORY", "WHERE CATEGORY='" + txtCatg.Text.Trim().ToUpper() + "'");
-        if (hfId.Value != "")
-        {
-            if (Catg == txtCatg.Text.Trim().ToUpper())
+        string Catg = clsConnection.OneFieldWithCond("CATEGORY", "CATEGORY", "WHERE CATEGORY='" + txtCatg.Text.Trim() + "' AND ID!='" + hfId.Value + "'");
+        //if (hfId.Value != "")
+        //{
+            if (Catg == txtCatg.Text.Trim())
             {
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "alert('This Category already Exists. Please Enter another Category');", true);
-                //return;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "alert('This Category already Exists. Please Enter another Category');", true);
+                return;
             }
-        }
+        //}
         if (txtDescription.Text == "")
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "alert('Please Enter Description');", true);
@@ -52,20 +52,23 @@ public partial class Admin_frm_ProdCatg : System.Web.UI.Page
         //}
         //else
         //{
-            DataSet ds = new DataSet();
-            ds = clsConnection.DsFill("CATEGORY");
-            DataRow dr = ds.Tables[0].NewRow();
-            dr["CATEGORY"] = txtCatg.Text.Trim().ToUpper();
-            dr["DESCRIPTION"] = txtDescription.Text.Trim().ToUpper();
-            if (hfCatid.Value != "")
-            {
-                dr["CATID"] = hfCatid.Value;
-            }
-            ds.Tables[0].Rows.Add(dr);
-            clsConnection.Save(ds, "CATEGORY");
+        clsConnection.ExcCom("UPDATE CATEGORY SET UPDATECOLUMN=0 where ID='" + hfId.Value + "'");
+        DataSet ds = new DataSet();
+        ds = clsConnection.DsFill("CATEGORY");
+        DataRow dr = ds.Tables[0].NewRow();
+        dr["CATEGORY"] = txtCatg.Text.Trim().ToUpper();
+        dr["DESCRIPTION"] = txtDescription.Text.Trim().ToUpper();
+        if (hfCatid.Value != "")
+        {
+            dr["CATID"] = hfCatid.Value;
+        }
+        ds.Tables[0].Rows.Add(dr);
+        clsConnection.Save(ds, "CATEGORY");
         //}
         hfCatid.Value = clsConnection.OneFieldWithCond("CATID", "CATEGORY", "WHERE CATEGORY='" + txtCatg.Text.Trim() + "'");
+        clsConnection.ExcCom("DELETE FROM  CATEGORY WHERE  UPDATECOLUMN=0 AND ID='" + hfId.Value + "'");
         ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "alert('Your product is registered under this '" + hfCatid.Value + "');", true);
+       
     }
 
     private void FillGrd()
@@ -75,50 +78,21 @@ public partial class Admin_frm_ProdCatg : System.Web.UI.Page
         grd.DataBind();
     }
 
-    private void ClearText(ControlCollection  con)
-    {
-        try
-        {
-            #region 
-     
-
-            #endregion
-            foreach (Control c in con)
-            {
-                if (c is TextBox)
-                {
-                    ((TextBox)c).Text = "";
-
-                }
-                //else
-                //{
-                //    if (cmbCust.SelectedIndex > 0)
-                //    {
-                //        cmbCust.SelectedIndex = 0;
-                //    }
-                //}
-            }
-        }
-        catch (Exception)
-        {
-        }
-    }
-
     protected void grd_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         string var = e.CommandName.ToString();
         int rowIndex = ((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex;
         int index = Convert.ToInt32(grd.Rows[rowIndex].RowIndex);
-
+        
         switch (var)
         {
             case "Edit":
-                    hf1.Value = index.ToString();
-                    hffield.Value = "Edit";
+                hf1.Value = index.ToString();
+                hffield.Value = "Edit";
                 break;
             case "Delete":
-                    hf1.Value = index.ToString();
-                    hffield.Value = "Delete";
+                hf1.Value = index.ToString();
+                hffield.Value = "Delete";
                 break;
         }
         ShowData();
@@ -128,19 +102,21 @@ public partial class Admin_frm_ProdCatg : System.Web.UI.Page
     {
         switch (hffield.Value)
         {
-            case"Edit":
+            case "Edit":
                 dt = new DataTable();
+                string QUERY = "SELECT ID,CATEGORY,DESCRIPTION,CATID FROM CATEGORY WHERE CATEGORY='" + grd.Rows[Convert.ToInt32(hf1.Value)].Cells[0].Text.Trim() + "' AND CATID='" + grd.Rows[Convert.ToInt32(hf1.Value)].Cells[2].Text.Trim() + "'";
                 dt = clsConnection.dtCondition("SELECT ID,CATEGORY,DESCRIPTION,CATID FROM CATEGORY WHERE CATEGORY='" + grd.Rows[Convert.ToInt32(hf1.Value)].Cells[0].Text.Trim() + "' AND CATID='" + grd.Rows[Convert.ToInt32(hf1.Value)].Cells[2].Text.Trim() + "'");
                 txtCatg.Text = dt.Rows[0][1].ToString().Trim();
                 txtDescription.Text = dt.Rows[0][2].ToString().Trim();
                 hfId.Value = dt.Rows[0][0].ToString().Trim();
                 hfCatid.Value = dt.Rows[0][3].ToString().Trim();
                 break;
-            case"Delete":
+            case "Delete":
                 clsConnection.ExcCom("DELETE FROM CATEGORY WHERE CATEGORY='" + grd.Rows[Convert.ToInt32(hf1.Value)].Cells[0].Text.Trim() + "' AND CATID='" + grd.Rows[Convert.ToInt32(hf1.Value)].Cells[2].Text.Trim() + "'");
                 FillGrd();
                 break;
         }
+
     }
 
     protected void grd_RowEditing(object sender, GridViewEditEventArgs e)
@@ -160,4 +136,5 @@ public partial class Admin_frm_ProdCatg : System.Web.UI.Page
         hffield.Value = "";
         hfId.Value = "";
     }
+    
 }
