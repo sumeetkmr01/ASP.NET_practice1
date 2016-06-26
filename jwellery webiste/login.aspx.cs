@@ -38,7 +38,13 @@ public partial class login : System.Web.UI.Page
         }
         else if (txtEmail.Text != username)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "alert('Invalid Username');", true);
+            //string queryString = "PopUpPage.aspx";
+            //string newWin = "window.open('" + queryString + "');";
+            //ClientScript.RegisterStartupScript(this.GetType(), "pop", newWin, true);
+            string url = "PopUpPage.aspx";
+            string s = "window.open('" + url + "', 'popup_window', 'width=300,height=100,left=100,top=100,resizable=yes');";
+            ClientScript.RegisterStartupScript(this.GetType(), "script", s, true);
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "alert('Invalid Username');", true);
         }
         else if(txtPassword.Text!=password)
         {
@@ -50,7 +56,7 @@ public partial class login : System.Web.UI.Page
        // ScriptManager.RegisterStartupScript(this, this.GetType(), "PopUP", "alert('Invalid Password');", true);
         //Page p = (Page)HttpContext.Current.CurrentHandler;
         //ScriptManager.RegisterClientScriptBlock(p, p.GetType(), "PopUP", "OpenSingle('~/PopUpPage.aspx','900px','490px');", true);
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "PopUP", "OpenSingle('PopUpPage.aspx','325px','350px','aa');", true);
+       // ScriptManager.RegisterStartupScript(this, this.GetType(), "PopUP", "OpenSingle('PopUpPage.aspx','325px','350px','aa');", true);
     }
 
     private void Open()

@@ -73,7 +73,7 @@ public partial class Admin_frm_ProdCatg : System.Web.UI.Page
 
     private void FillGrd()
     {
-        DataTable dtFill = clsConnection.DtFill("CATEGORY");
+        DataTable dtFill = clsConnection.DtFill("CATEGORY ORDER BY CATID");
         grd.DataSource = dtFill;
         grd.DataBind();
     }
