@@ -157,7 +157,8 @@ public class clsConnection
            ClearInputs(ctrl.Controls);
        }
    }
-	public clsConnection()
+
+  public clsConnection()
 	{
 		//
 		// TODO: Add constructor logic here
@@ -165,3 +166,4 @@ public class clsConnection
 	}
    
 }
+

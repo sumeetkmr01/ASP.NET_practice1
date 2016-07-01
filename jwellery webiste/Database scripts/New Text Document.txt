@@ -12,3 +12,12 @@ add UpdateColumn varchar(max)
 
 alter table category
 add UpdateColumn varchar(max)
+
+
+ALTER TABLE CATEGORY ADD MDate DATE
+
+EXEC sp_rename 'CATEGORY.UpdateColumn', 'IsDel', 'COLUMN'
+
+//<system.web>
+
+    <globalization culture="en-GB" uiCulture="en"/>
