@@ -6,25 +6,26 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using System.Web.Services;
 
 public partial class Admin_frm_ProdCatg : System.Web.UI.Page
 {
     DataTable dt;
     string CatID = "";
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-            FillGrd();
+           FillGrd();
+            //GetCatPageWise(1,10);
         }
     }
-
 
     public void alertmsg(string msg)
     {
         ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "alert('"+msg+"');", true);
     }
-
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
@@ -73,6 +74,9 @@ public partial class Admin_frm_ProdCatg : System.Web.UI.Page
         DataTable dtFill = clsConnection.DtFill("CATEGORY WHERE ISDEL=0 OR ISDEL IS NULL ORDER BY CATID");
         grd.DataSource = dtFill;
         grd.DataBind();
+        grd.DataSource = GetCatPageWise(1, 30);
+        grd.DataBind();
+
     }
 
     protected void grd_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -102,7 +106,7 @@ public partial class Admin_frm_ProdCatg : System.Web.UI.Page
        cmd.Parameters.AddWithValue("@cat", ((TextBox)(grd.Rows[e.RowIndex].Cells[1].Controls[0])).Text.Trim());
        cmd.Parameters.AddWithValue("@desc", ((TextBox)(grd.Rows[e.RowIndex].Cells[2].Controls[0])).Text.Trim());
        cmd.Parameters.AddWithValue("@del",1);
-       cmd.Parameters.AddWithValue("@md", System.DateTime.Now.Date);
+       cmd.Parameters.AddWithValue("@md", System.DateTime.Now.Date.ToString("dd/MM/yyyy"));
        cmd.Parameters.AddWithValue("@catid", grd.Rows[e.RowIndex].Cells[3].Text.Trim());
        cmd.ExecuteNonQuery();
        grd.EditIndex = -1;
@@ -114,5 +118,42 @@ public partial class Admin_frm_ProdCatg : System.Web.UI.Page
     {
         grd.EditIndex = -1;
         FillGrd();
+    }
+
+    public static  DataSet GetCatPageWise(int pageIndex, int pageSize)
+    {
+        using (SqlCommand cmd = new SqlCommand("[GetCatPageWise]"))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@PageIndex", pageIndex);
+                cmd.Parameters.AddWithValue("@PageSize", pageSize);
+                cmd.Parameters.Add("@PageCount", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
+                using (SqlDataAdapter sda = new SqlDataAdapter())
+                {
+                    cmd.Connection = clsConnection.Connect();
+                    sda.SelectCommand = cmd;
+                    using (DataSet ds = new DataSet())
+                    {
+                        sda.Fill(ds, "CATEGORY");
+                        DataTable dt = new DataTable("PageCount");
+                        dt.Columns.Add("PageCount");
+                        dt.Rows.Add();
+                        dt.Rows[0][0] = cmd.Parameters["@PageCount"].Value;
+                        ds.Tables.Add(dt);
+                        return ds;
+                    }
+                    
+                }
+            }
+        
+    }
+    [WebMethod]
+    public static string GetCategory(int pageIndex)
+    {
+        //Added to similate delay so that we see the loader working
+        //Must be removed when moving to production
+        System.Threading.Thread.Sleep(2000);
+
+        return GetCatPageWise(pageIndex, 5).GetXml();
     }
 }
